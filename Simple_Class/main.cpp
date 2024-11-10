@@ -9,7 +9,8 @@ using namespace std;
 
 int main(){
 
-    setlocale(LC_ALL, "ru-RU.UTF-8"); 
+    setlocale(LC_ALL, "ru-RU.UTF-8");
+     
            // 
     //subs[1].balance = 500;
     //for(int i = 0; i < 2; i++){
@@ -22,7 +23,7 @@ int main(){
     cout<<"yes";
     subs[0].set_tariff("Базовый");
     subs[0].set_name("Jack Hopkins");
-    subs[0].set_an("000001");
+    subs[0].set_pn("+8(800)555-35-35");
     //subs[0].set_an("000003");
     cout<<"yes";
     // TelSub subs1[2]{TelSub("+8(800)555-35-35", "000001", "Базовый", "Иванов Иван Иванович", 0),
