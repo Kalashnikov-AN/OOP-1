@@ -1,13 +1,18 @@
+// Автор: Калашников А.Н.
 #pragma once
 #include <string>
 using namespace std;
-/// 
+/// Класс телефонного абонента
 class TelSub{
-
 private:
+    // поля класса:
+    // номер телефона абонента
     string phone_number;
+    // номер лицевого счёта абонента
     string account_number;
+    // название тарифа абонента
     string tariff;
+    // имя абонента
     string name;
 public:
     double balance;
@@ -33,4 +38,4 @@ public:
     /// 
     string to_string() const;
 };
-void print_sub(const TelSub & sub);
+void Test_TelSub();
