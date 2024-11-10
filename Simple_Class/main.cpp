@@ -5,15 +5,33 @@
 using namespace std;
 
 
-// void print_coord(const GeoCoord & coord){
-//     cout << coord.to_string();
-// }
+
 
 int main(){
 
-
-    // GeoCoord coords[100];       // 
-
+    setlocale(LC_ALL, "ru-RU.UTF-8"); 
+           // 
+    //subs[1].balance = 500;
+    //for(int i = 0; i < 2; i++){
+    try{
+    cout<<"yes";
+    //subs[2] = TelSub("+8(800)555-35-35", "000001", "Базовый", "Иванов Иван Иванович", 0);
+    //subs[2].replenish_balance(250);
+    //print_sub(subs[0]);
+    TelSub subs[10];
+    cout<<"yes";
+    subs[0].set_tariff("Базовый");
+    subs[0].set_name("Jack Hopkins");
+    subs[0].set_an("000001");
+    //subs[0].set_an("000003");
+    cout<<"yes";
+    // TelSub subs1[2]{TelSub("+8(800)555-35-35", "000001", "Базовый", "Иванов Иван Иванович", 0),
+    // TelSub("+8(800)555-35-35", "000001", "Базовый", "Иванов Иван Иванович", 0)};
+    }
+    catch(invalid_argument error){ // если поймали ошибку типа invalid_argument
+        cout << error.what(); // выведем сообщение об ошибке на экран
+    }
+}
     // coords[4].set_lon(22);
     // cout << coords[4].to_string();
 
@@ -40,4 +58,4 @@ int main(){
     // for (int i = 0; i<3; i++)
     //     delete coords3[i];
 
-}
+//}

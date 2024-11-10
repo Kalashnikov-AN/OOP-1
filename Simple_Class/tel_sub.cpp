@@ -7,14 +7,15 @@
 // Контейнеры - шаблоны классов
 #include <algorithm>
 #include <cctype>
+#include <iostream>
 using namespace std;
 vector <string> tariffs{"Базовый", "Медиум", "Продвинутый", "Про", "Бюджетный", "Супер-Тариф", "Мега-Тариф"};
 TelSub::TelSub() {
 balance = 0;
-set_pn("+8(924)000-00-00");
-set_an("000001");
-set_tariff("Базовый");
-set_name("Фамилия Имя Отчество");
+phone_number = "+8(924)000-00-00";
+account_number = "000001";
+tariff = "Базовый";
+name = "Фамилия Имя Отчество";
 }
 
 TelSub::TelSub(string pn, string an, string tariff1, string name1, double balance1) {
@@ -22,7 +23,7 @@ TelSub::TelSub(string pn, string an, string tariff1, string name1, double balanc
         set_an(an);
         set_tariff(tariff1);
         set_name(name1);
-        balance = 0;
+        balance = balance1;
     }
 
 void TelSub::set_pn(string pn){
@@ -38,9 +39,13 @@ void TelSub::set_pn(string pn){
 }
 
 ///
-void TelSub::set_an(string an){
-        regex rx("([0-9]{6})");
-        if(regex_match(an, rx)){
+void TelSub::set_an(const string& an){
+        if (an.empty()){
+                throw invalid_argument("error bad al");
+        }
+        try{
+        static const regex rx(R"([0-9]{6})");
+         if(regex_match(an, rx)){
                 account_number = an;
         }
         else{
@@ -48,6 +53,11 @@ void TelSub::set_an(string an){
                 throw invalid_argument("Ошибка: неверно введён лицевой счёт. Придерживайтесь  шестизначного числового формата ");
 
         }
+        }
+        catch (const std::regex_error& e) {
+std::cerr << "Ошибка компиляции регулярного выражения: " << e.what() << std::endl;
+        }
+        
 }
 ///
 void TelSub::set_tariff(string tariff1){
@@ -106,3 +116,6 @@ string TelSub::to_string() const{
         s = phone_number + ' ' + account_number + ' ' + tariff + ' ' + name + ' ' + std::to_string(balance);
         return s; 
 }
+void print_sub(const TelSub & sub){
+     cout << sub.to_string();
+ }

@@ -23,7 +23,7 @@ public:
     string get_name() const;
     void set_pn( string pn );
     ///
-    void set_an( string an );
+    void set_an( const string& an );
     ///
     void set_tariff( string tariff1 );
     ///
@@ -33,3 +33,4 @@ public:
     /// 
     string to_string() const;
 };
+void print_sub(const TelSub & sub);
