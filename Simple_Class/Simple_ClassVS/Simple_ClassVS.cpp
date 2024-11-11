@@ -16,6 +16,7 @@ int main() {
         // Статическое создание объекта с помощью конструктора c параметрами
         TelSub SubP("+8(800)924-32-71", "000002", "Medium", "John Light", 120);
         cout << SubP.to_string(); // Вывод полей объекта
+
         // Статический массив из объектов
         TelSub subs[10];
         subs[0].set_tariff("Based");
@@ -24,14 +25,16 @@ int main() {
         subs[0].set_an("000003");
         subs[0].replenish_balance(400);
         cout << subs[0].to_string(); // Вывод всех полей объекта на экран
+
         // Динамическое создание объекта
         TelSub* SubDin = new TelSub;
         (*SubDin).set_an("000004"); // работа с его методами первым способом
-        SubDin->set_name("Ryan Dark"); 	// работа с его методами вторым способом
+        SubDin->set_name("Ryan Dark");  // работа с его методами вторым способом
         cout << SubDin->to_string();
         delete SubDin; // удаление динамического объекта
         // Статический массив из указателей на объекты
-        TelSub* SubPtr[10];
+        TelSub* SubPtr[10]; // 0 objects
+
         for (int i = 0; i < 10; i++) {
             SubPtr[i] = new TelSub();
             cout << SubPtr[i]->to_string();

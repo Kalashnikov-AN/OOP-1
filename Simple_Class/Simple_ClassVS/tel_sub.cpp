@@ -21,7 +21,7 @@ tariff = "Based";
 name = "Name Surname";
 }
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс
-TelSub::TelSub(string pn, string an, string tariff1, string name1, double balance1) {
+TelSub::TelSub(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1) {
         set_pn(pn);
         set_an(an);
         set_tariff(tariff1);
@@ -29,7 +29,7 @@ TelSub::TelSub(string pn, string an, string tariff1, string name1, double balanc
         balance = balance1;
     }
 /// Изменяет поле номера телефона на номер телефона pn
-void TelSub::set_pn(string pn){
+void TelSub::set_pn(const string& pn){
         regex rx("\\+([0-9]{1})(\\([0-9]{1,3}\\))([0-9\\-]{9})"); // маска номера телефона
         if(regex_match(pn, rx)){ // если введенный номер телефона совпадает по маске с р.в
                 phone_number = pn;
@@ -44,6 +44,7 @@ void TelSub::set_pn(string pn){
 /// Изменяет поле лицевого счёта абонента на лицевой счёт an
 void TelSub::set_an(const string& an){
          static const regex rx(R"([0-9]{6})"); // регулярное выражение, любое шестизначное число
+         // todo: подробно про regex комменты
          if(regex_match(an, rx)){ // если введенный лицевой счёт совпадает по маске с р.в.
                 account_number = an;
         }
@@ -54,7 +55,7 @@ void TelSub::set_an(const string& an){
         }    
 }
 /// Изменяет поле тарифа на тариф tariff1
-void TelSub::set_tariff(string tariff1){
+void TelSub::set_tariff(const string& tariff1){
         // если введённый тариф присутствует в списке тарифов
         if (count(tariffs.begin(), tariffs.end(), tariff1) > 0){ 
                 tariff = tariff1;
@@ -67,7 +68,7 @@ void TelSub::set_tariff(string tariff1){
 }
 
 /// Изменяет поле имени абонента на имя name1
-void TelSub::set_name(string name1){
+void TelSub::set_name(const string& name1){
         bool isNameValid = all_of(name1.begin(), name1.end(), [](char c) { // Подходит, если состоит только
 return isalpha(c) || isspace(c); // из букв и пробелов
 });
@@ -99,7 +100,7 @@ string TelSub::get_name() const{
         return name;
 }
 /// Пополнение баланса абонента на величину balance1
-void TelSub::replenish_balance(double balance1){
+void TelSub::replenish_balance(const double& balance1){
         if (balance1 > 0){
                 balance += balance1;
         }
@@ -108,7 +109,7 @@ void TelSub::replenish_balance(double balance1){
 
         }
 }
-/// Возвращает строку из всех полей класса TelSub
+/// Возвращает строку из всех полей объекта класса TelSub
 string TelSub::to_string() const{
         string s;
         s = phone_number + ' ' + account_number + ' ' + tariff + ' ' + name + ' ' + std::to_string(balance) + '\n';
@@ -119,7 +120,7 @@ void Test_TelSub() {
     // Проверка конструктора с параметрами, проверка геттеров
     TelSub TestSub("+8(800)123-45-67", "000007", "Super-Tariff", "Test Test", 100);
     assert(TestSub.get_pn() == "+8(800)123-45-67");
-    assert(TestSub.get_an() == "000007");
+    assert(TestSub.get_an () == "000007");
     assert(TestSub.get_tariff() == "Super-Tariff");
     assert(TestSub.get_name() == "Test Test");
     assert(TestSub.balance == 100);
