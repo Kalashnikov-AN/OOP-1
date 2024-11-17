@@ -9,7 +9,7 @@ int main() {
     setlocale(LC_ALL, "ru-RU.UTF-8");
     // Тестирование методов класса
     Test_TelSub();
-    try { // защищённая область кода
+    
         // Статическое создание объекта с помощью конструктора по умолчанию
         TelSub sub;
         cout << sub.to_string(); // Вывод полей объекта
@@ -40,7 +40,7 @@ int main() {
         cout << SubDin->to_string();
         delete SubDin; // удаление динамического объекта
         // Статический массив из указателей на объекты
-        TelSub* SubPtr[10]; // 0 objects
+        TelSub* SubPtr[10]; // 0 объектов создано
 
         for (int i = 0; i < 10; i++) {
             SubPtr[i] = new TelSub();
@@ -51,8 +51,5 @@ int main() {
             delete SubPtr[i];
         }
         
-    }
-    catch (invalid_argument error) { // если поймали ошибку типа invalid_argument
-        cout << error.what(); // выведем сообщение об ошибке на экран
-    }
+   
 }

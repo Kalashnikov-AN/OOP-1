@@ -2,7 +2,6 @@
 #include "tel_sub.h"
 #include <regex>
 #include <string>
-#include <stdexcept> // Заголовочный файл, используемый для сообщений об исключениях
 #include <vector> // Заголовочный файл для работы с вектором. Вектор представляет контейнер,
 //который содержит коллекцию объектов одного типа.
 // Контейнеры - шаблоны классов
@@ -42,7 +41,7 @@ void TelSub::set_pn(const string& pn){
         }
         else{
                 phone_number = "+8(924)000-00-00";
-                throw invalid_argument("Ошибка: неверно введён номер телефона. Придерживайтесь формата +.(...)...-..-..");
+                cerr << ("Ошибка: неверно введён номер телефона. Придерживайтесь формата +.(...)...-..-..") << endl;
 
         }
 }
@@ -59,7 +58,7 @@ void TelSub::set_an(const string& an){
         }
         else{
                 account_number = "000001";
-                throw invalid_argument("Ошибка: неверно введён лицевой счёт. Придерживайтесь  шестизначного числового формата ");
+                cerr << ("Ошибка: неверно введён лицевой счёт. Придерживайтесь  шестизначного числового формата ") << endl;
 
         }    
 }
@@ -71,7 +70,7 @@ void TelSub::set_tariff(const string& tariff1){
         }
         else{
                 tariff = "Базовый";
-                throw invalid_argument("Ошибка: неверно введён тариф. Выберите тариф из списка тарифов");
+                cerr << ("Ошибка: неверно введён тариф. Выберите тариф из списка тарифов") << endl;
 
         }
 }
@@ -87,7 +86,7 @@ return isalpha(c) || isspace(c); // из букв и пробелов
         // если не подходит
         else{
                 name = "Фамилия Имя Отчество";
-                throw invalid_argument("Ошибка: неверно введено ФИО");
+                cerr << ("Ошибка: неверно введено ФИО") << endl;
 
         }
 }
@@ -114,7 +113,7 @@ void TelSub::replenish_balance(const double& balance1){
                 balance += balance1;
         }
         else{
-                throw invalid_argument("Ошибка: неверно введена сумма пополнения баланса");
+            cerr << ("Ошибка: неверно введена сумма пополнения баланса") << endl;
 
         }
 }
@@ -162,7 +161,6 @@ void TelSub::load_sub(const string& fname, TelSub& sub) {
         
     }
 }
-//todo: работа с файлами
 /// Тестирование методов класса
 void Test_TelSub() {
     // Проверка конструктора с параметрами, проверка геттеров
@@ -184,5 +182,16 @@ void Test_TelSub() {
     assert(TestSet.get_tariff() == "Based");
     TestSet.replenish_balance(150);
     assert(TestSet.balance == 150);
-    //todo: проверка валидации введённых данных
+
+    // Тест проверки введённых данных
+    TestSet.set_name("123");
+    assert(TestSet.get_name() == "Фамилия Имя Отчество");
+    TestSet.set_pn("123");
+    assert(TestSet.get_pn() == "+8(924)000-00-00");
+    TestSet.set_an("123");
+    assert(TestSet.get_an() == "000001");
+    TestSet.set_tariff("123");
+    assert(TestSet.get_tariff() == "Базовый");
+    TestSet.replenish_balance(-20);
+    assert(TestSet.balance == 150);
 }
