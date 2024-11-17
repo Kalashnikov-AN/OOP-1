@@ -10,6 +10,7 @@
 #include <cctype>
 #include <iostream>
 #include <cassert>
+#include <fstream>
 using namespace std;
 vector <string> tariffs{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
 /// Конструктор по умолчанию
@@ -122,6 +123,44 @@ string TelSub::to_string() const{
         string s;
         s = phone_number + ' ' + account_number + ' ' + tariff + ' ' + name + ' ' + std::to_string(balance) + '\n';
         return s; 
+}
+/// Записывает поля объекта класса TelSub в файл fname
+void TelSub::save_sub(const string& fname) const {
+    ofstream f(fname); // Открываем файл на запись
+    if (f.is_open()) { // Если файл открыт
+        ///auto temp;
+        auto temp = account_number;
+        f << temp << endl;
+        temp = name;
+        f << temp << endl;
+        temp = phone_number;
+        f << temp << endl;
+        temp = tariff;
+        f << temp << endl;
+        double temp1 = balance;
+        f << temp1 << endl;
+        f.close();
+    }
+}
+/// Считывает данные из файла fname и заполняет поля объекта sub
+void TelSub::load_sub(const string& fname, TelSub& sub) {
+    ifstream f(fname); // Открываем файл на чтение
+    if (f.is_open()) {
+        string temp;
+        getline(f, temp);
+        sub.set_an(temp);
+        getline(f, temp);
+        sub.set_name(temp);
+        getline(f, temp);
+        sub.set_pn(temp);
+        getline(f, temp);
+        sub.set_tariff(temp);
+        double temp1;
+        f >> temp1;
+        sub.balance = temp1;
+        f.close();
+        
+    }
 }
 //todo: работа с файлами
 /// Тестирование методов класса
