@@ -42,7 +42,9 @@ public:
     void replenish_balance(const double& balance1);
     /// Возвращает строку из всех полей объекта класса TelSub 
     string to_string() const;
+    /// Записывает поля объекта класса TelSub в файл fname
     void save_sub(const string& fname) const;
+    /// Считывает данные из файла fname и заполняет поля объекта sub
     void load_sub(const string& fname, TelSub& sub);
 };
 /// Тестирование методов класса
