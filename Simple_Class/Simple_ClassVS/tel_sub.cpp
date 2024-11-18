@@ -1,4 +1,6 @@
 // Автор: Калашников А.Н.
+
+
 #include "tel_sub.h"
 #include <regex>
 #include <string>
@@ -10,8 +12,14 @@
 #include <iostream>
 #include <cassert>
 #include <fstream>
+
+
 using namespace std;
+
+
 vector <string> tariffs{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
+
+
 /// Конструктор по умолчанию
 TelSub::TelSub() {
 balance = 0;
@@ -28,6 +36,8 @@ TelSub::TelSub(const string& pn, const string& an, const string& tariff1, const 
         set_name(name1);
         balance = balance1;
     }
+
+
 /// Изменяет поле номера телефона на номер телефона pn
 void TelSub::set_pn(const string& pn){
         /*создаём объект rx типа regex(регулярное выражение) из стандартной библиотеки C++ <regex>.
@@ -62,6 +72,7 @@ void TelSub::set_an(const string& an){
 
         }    
 }
+
 /// Изменяет поле тарифа на тариф tariff1
 void TelSub::set_tariff(const string& tariff1){
         // если введённый тариф присутствует в списке тарифов
@@ -113,7 +124,7 @@ void TelSub::replenish_balance(const double& balance1){
                 balance += balance1;
         }
         else{
-            cerr << ("Ошибка: неверно введена сумма пополнения баланса") << endl;
+            cerr << ("Ошибка: неверно введена сумма пополнения баланса") << endl; //todo: канал ошибок
 
         }
 }
@@ -127,8 +138,7 @@ string TelSub::to_string() const{
 void TelSub::save_sub(const string& fname) const {
     ofstream f(fname); // Открываем файл на запись
     if (f.is_open()) { // Если файл открыт
-        ///auto temp;
-        auto temp = account_number;
+        string temp = account_number;
         f << temp << endl;
         temp = name;
         f << temp << endl;
@@ -141,6 +151,8 @@ void TelSub::save_sub(const string& fname) const {
         f.close();
     }
 }
+//todo: убрать лишний параметр, можно возвращать объект класса Telsub, можно сделать статическим методом
+//todo: тест функций для файлов, можно создать уже заполненный файл для тестов
 /// Считывает данные из файла fname и заполняет поля объекта sub
 void TelSub::load_sub(const string& fname, TelSub& sub) {
     ifstream f(fname); // Открываем файл на чтение
