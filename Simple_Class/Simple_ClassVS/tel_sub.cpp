@@ -124,7 +124,8 @@ void TelSub::replenish_balance(const double& balance1){
                 balance += balance1;
         }
         else{
-            cerr << ("Ошибка: неверно введена сумма пополнения баланса") << endl; //todo: канал ошибок
+            // std::cerr используется для вывода ошибок в стандартный поток ошибок (stderr)
+            cerr << ("Ошибка: неверно введена сумма пополнения баланса") << endl; 
 
         }
 }
@@ -151,24 +152,23 @@ void TelSub::save_sub(const string& fname) const {
         f.close();
     }
 }
-//todo: убрать лишний параметр, можно возвращать объект класса Telsub, можно сделать статическим методом
 //todo: тест функций для файлов, можно создать уже заполненный файл для тестов
 /// Считывает данные из файла fname и заполняет поля объекта sub
-void TelSub::load_sub(const string& fname, TelSub& sub) {
+void TelSub::load_sub(const string& fname) {
     ifstream f(fname); // Открываем файл на чтение
     if (f.is_open()) {
         string temp;
         getline(f, temp);
-        sub.set_an(temp);
+        set_an(temp);
         getline(f, temp);
-        sub.set_name(temp);
+        set_name(temp);
         getline(f, temp);
-        sub.set_pn(temp);
+        set_pn(temp);
         getline(f, temp);
-        sub.set_tariff(temp);
+        set_tariff(temp);
         double temp1;
         f >> temp1;
-        sub.balance = temp1;
+        balance = temp1;
         f.close();
         
     }

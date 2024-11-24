@@ -45,7 +45,7 @@ public:
     /// Записывает поля объекта класса TelSub в файл fname
     void save_sub(const string& fname) const;
     /// Считывает данные из файла fname и заполняет поля объекта sub
-    void load_sub(const string& fname, TelSub& sub);
+    void load_sub(const string& fname);
 };
 /// Тестирование методов класса
 void Test_TelSub();

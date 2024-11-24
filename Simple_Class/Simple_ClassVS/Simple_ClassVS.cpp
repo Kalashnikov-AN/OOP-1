@@ -29,7 +29,7 @@ int main() {
         // Запись состояния объекта в файл, загрузка состояния объекта из файла
         string fname = "test.txt";
         subs[0].save_sub(fname);
-        subs[1].load_sub(fname, subs[1]);
+        subs[1].load_sub(fname);
         cout << subs[1].to_string();
 
         
