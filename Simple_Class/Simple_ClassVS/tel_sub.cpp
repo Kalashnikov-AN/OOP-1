@@ -1,6 +1,5 @@
 // Автор: Калашников А.Н.
 
-
 #include "tel_sub.h"
 #include <regex>
 #include <string>
@@ -80,7 +79,7 @@ void TelSub::set_tariff(const string& tariff1){
                 tariff = tariff1;
         }
         else{
-                tariff = "Базовый";
+                tariff = "Based";
                 cerr << ("Ошибка: неверно введён тариф. Выберите тариф из списка тарифов") << endl;
 
         }
@@ -96,7 +95,7 @@ return isalpha(c) || isspace(c); // из букв и пробелов
         }
         // если не подходит
         else{
-                name = "Фамилия Имя Отчество";
+                name = "Name Surname";
                 cerr << ("Ошибка: неверно введено ФИО") << endl;
 
         }
@@ -118,6 +117,7 @@ string TelSub::get_tariff() const{
 string TelSub::get_name() const{
         return name;
 }
+
 /// Пополнение баланса абонента на величину balance1
 void TelSub::replenish_balance(const double& balance1){
         if (balance1 > 0){
@@ -129,12 +129,14 @@ void TelSub::replenish_balance(const double& balance1){
 
         }
 }
+
 /// Возвращает строку из всех полей объекта класса TelSub
 string TelSub::to_string() const{
         string s;
         s = phone_number + ' ' + account_number + ' ' + tariff + ' ' + name + ' ' + std::to_string(balance) + '\n';
         return s; 
 }
+
 /// Записывает поля объекта класса TelSub в файл fname
 void TelSub::save_sub(const string& fname) const {
     ofstream f(fname); // Открываем файл на запись
@@ -152,7 +154,7 @@ void TelSub::save_sub(const string& fname) const {
         f.close();
     }
 }
-//todo: тест функций для файлов, можно создать уже заполненный файл для тестов
+
 /// Считывает данные из файла fname и заполняет поля объекта sub
 void TelSub::load_sub(const string& fname) {
     ifstream f(fname); // Открываем файл на чтение
@@ -173,6 +175,7 @@ void TelSub::load_sub(const string& fname) {
         
     }
 }
+
 /// Тестирование методов класса
 void Test_TelSub() {
     // Проверка конструктора с параметрами, проверка геттеров
@@ -182,6 +185,7 @@ void Test_TelSub() {
     assert(TestSub.get_tariff() == "Super-Tariff");
     assert(TestSub.get_name() == "Test Test");
     assert(TestSub.balance == 100);
+
     // Проверка сеттеров
     TelSub TestSet;
     TestSet.set_name("Billy Johnson");
@@ -197,13 +201,25 @@ void Test_TelSub() {
 
     // Тест проверки введённых данных
     TestSet.set_name("123");
-    assert(TestSet.get_name() == "Фамилия Имя Отчество");
+    assert(TestSet.get_name() == "Name Surname");
     TestSet.set_pn("123");
     assert(TestSet.get_pn() == "+8(924)000-00-00");
     TestSet.set_an("123");
     assert(TestSet.get_an() == "000001");
     TestSet.set_tariff("123");
-    assert(TestSet.get_tariff() == "Базовый");
+    assert(TestSet.get_tariff() == "Based");
     TestSet.replenish_balance(-20);
     assert(TestSet.balance == 150);
+
+    // Тест функции save_sub
+    string test_fname = "test.txt";
+    TestSet.save_sub(test_fname);
+    TelSub LoadSet;
+    LoadSet.load_sub(test_fname);
+    assert(LoadSet.to_string() == "+8(924)000-00-00 000001 Based Name Surname 150,000000\n");
+
+    // Тест функции load_sub
+    string test_fname2 = "test_load.txt";
+    LoadSet.load_sub(test_fname2);
+    assert(LoadSet.to_string() == "+8(914)000-00-00 000002 Based Name Surname 100,000000\n");
 }

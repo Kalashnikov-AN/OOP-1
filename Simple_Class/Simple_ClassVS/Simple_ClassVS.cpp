@@ -1,4 +1,4 @@
-﻿// Автор: Калашников А.Н.
+// Автор: Калашников А.Н.
 #include <iostream>
 #include "tel_sub.h"
 
@@ -27,7 +27,7 @@ int main() {
         cout << subs[0].to_string(); // Вывод всех полей объекта на экран
 
         // Запись состояния объекта в файл, загрузка состояния объекта из файла
-        string fname = "test.txt";
+        string fname = "text.txt";
         subs[0].save_sub(fname);
         subs[1].load_sub(fname);
         cout << subs[1].to_string();
