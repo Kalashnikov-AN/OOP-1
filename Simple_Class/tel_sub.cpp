@@ -1,4 +1,4 @@
-#include "tel_sub.h"
+#include "tel_sub.h" //заголовочный файл
 #include <regex>
 #include <string>
 #include <stdexcept> // Заголовочный файл, используемый для сообщений об исключениях
