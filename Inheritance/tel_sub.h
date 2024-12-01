@@ -10,10 +10,12 @@ private:
     string phone_number;
     // номер лицевого счёта абонента
     string account_number;
-    // название тарифа абонента
-    string tariff;
+    
     // имя абонента
     string name;
+protected:
+    // название тарифа абонента
+    string tariff;
 public:
     // баланс абонента
     double balance;

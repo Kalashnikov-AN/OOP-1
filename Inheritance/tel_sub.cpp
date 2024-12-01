@@ -15,9 +15,9 @@
 
 using namespace std;
 
-vector <string> corp_tariffs{ "Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff" };
+vector <string> corp_tariffs{ "Partner", "Union", "Best Friends"};
 vector <string> tariffs{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
-vector <string> levels{"Friend", "Partner", "Super-Premium"};
+vector <string> levels{"Great Guy", "Friend", "Super-Premium"};
 
 
 /// Конструктор по умолчанию
@@ -189,11 +189,11 @@ CorporateTS::CorporateTS() {
 /// Изменяет поле тарифа на тариф tariff1
 void CorporateTS::set_tariff(const string& tariff1) {
     // если введённый тариф присутствует в списке тарифов
-    if (count(tariffs.begin(), tariffs.end(), tariff1) > 0) {
+    if (count(corp_tariffs.begin(), corp_tariffs.end(), tariff1) > 0) {
         tariff = tariff1;
     }
     else {
-        tariff = "Based";
+        tariff = "Partner";
         cerr << ("Ошибка: неверно введён тариф. Выберите тариф из списка тарифов") << endl;
 
     }
