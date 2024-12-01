@@ -15,7 +15,7 @@
 
 using namespace std;
 
-
+vector <string> corp_tariffs{ "Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff" };
 vector <string> tariffs{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
 vector <string> levels{"Friend", "Partner", "Super-Premium"};
 
@@ -186,8 +186,21 @@ CorporateTS::CorporateTS() {
     company_balance = 546;
 }
 
+/// Изменяет поле тарифа на тариф tariff1
+void CorporateTS::set_tariff(const string& tariff1) {
+    // если введённый тариф присутствует в списке тарифов
+    if (count(tariffs.begin(), tariffs.end(), tariff1) > 0) {
+        tariff = tariff1;
+    }
+    else {
+        tariff = "Based";
+        cerr << ("Ошибка: неверно введён тариф. Выберите тариф из списка тарифов") << endl;
+
+    }
+}
+
 string CorporateTS::to_string() const {
-    return "123";
+    return TelSub::to_string() + company_name +  employee_status + ::to_string(company_balance);
 }
 
 PremiumTS::PremiumTS() {
@@ -196,7 +209,7 @@ PremiumTS::PremiumTS() {
 }
 
 void PremiumTS::set_level(string level) {
-    // если введённый уровень премиум присутствует в списке премиумов 
+    // если введённый уровень премиума присутствует в списке премиумов 
     if (count(levels.begin(), levels.end(), level) > 0) {
         premium_level = level;
     }

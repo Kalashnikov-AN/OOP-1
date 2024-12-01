@@ -35,7 +35,7 @@ public:
     /// Изменяет поле лицевого счёта абонента на лицевой счёт an
     void set_an( const string& an );
     /// Изменяет поле тарифа на тариф tariff1
-    void set_tariff(const string& tariff1 );
+    virtual void set_tariff(const string& tariff1 );
     /// Изменяет поле имени абонента на имя name1
     void set_name(const string& name1 );
     /// Пополнение баланса абонента на величину balance1
@@ -55,6 +55,7 @@ public:
     string employee_status;
     double company_balance;
     CorporateTS();
+    void set_tariff(const string& tariff1) override;
     string to_string() const override;
 };
 

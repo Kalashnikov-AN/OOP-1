@@ -1,2 +1,15 @@
-﻿  tel_sub.cpp
-  Inheritance.vcxproj -> C:\Users\huuma\Documents\ООП\OOP-1\Inheritance\x64\Debug\Inheritance.exe
+﻿  Inheritance.cpp
+  tel_sub.cpp
+C:\Users\huuma\Documents\ООП\OOP-1\Inheritance\tel_sub.cpp(193,9): error C2248: TelSub::tariff: невозможно обратиться к private член, объявленному в классе "TelSub"
+      C:\Users\huuma\Documents\ООП\OOP-1\Inheritance\tel_sub.h(14,12):
+       см. объявление "TelSub::tariff"
+      C:\Users\huuma\Documents\ООП\OOP-1\Inheritance\tel_sub.h(6,7):
+       см. объявление "TelSub"
+  
+C:\Users\huuma\Documents\ООП\OOP-1\Inheritance\tel_sub.cpp(196,9): error C2248: TelSub::tariff: невозможно обратиться к private член, объявленному в классе "TelSub"
+      C:\Users\huuma\Documents\ООП\OOP-1\Inheritance\tel_sub.h(14,12):
+       см. объявление "TelSub::tariff"
+      C:\Users\huuma\Documents\ООП\OOP-1\Inheritance\tel_sub.h(6,7):
+       см. объявление "TelSub"
+  
+  Создание кода...
