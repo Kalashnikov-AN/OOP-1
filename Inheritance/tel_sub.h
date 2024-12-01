@@ -47,5 +47,19 @@ public:
     /// Считывает данные из файла fname и заполняет поля объекта sub
     void load_sub(const string& fname);
 };
+
+class CorporateTS: public TelSub {
+private:
+public:
+    string company_name;
+    string employee_status;
+    double company_balance;
+    CorporateTS();
+};
+
+class PremiumTS: public TelSub {
+
+};
+
 /// Тестирование методов класса
 void Test_TelSub();

@@ -27,6 +27,12 @@ account_number = "000001";
 tariff = "Based";
 name = "Name Surname";
 }
+
+CorporateTS::CorporateTS(){
+    company_name = "123";
+    employee_status = "321";
+    company_balance = 546;
+}
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс
 TelSub::TelSub(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1) {
         set_pn(pn);
