@@ -17,6 +17,7 @@ using namespace std;
 
 
 vector <string> tariffs{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
+vector <string> levels{"Friend", "Partner", "Super-Premium"};
 
 
 /// Конструктор по умолчанию
@@ -28,11 +29,8 @@ tariff = "Based";
 name = "Name Surname";
 }
 
-CorporateTS::CorporateTS(){
-    company_name = "123";
-    employee_status = "321";
-    company_balance = 546;
-}
+
+
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс
 TelSub::TelSub(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1) {
         set_pn(pn);
@@ -137,7 +135,7 @@ void TelSub::replenish_balance(const double& balance1){
 }
 
 /// Возвращает строку из всех полей объекта класса TelSub
-string TelSub::to_string() const{
+string TelSub::to_string() const {
         string s;
         s = phone_number + ' ' + account_number + ' ' + tariff + ' ' + name + ' ' + std::to_string(balance) + '\n';
         return s; 
@@ -180,6 +178,59 @@ void TelSub::load_sub(const string& fname) {
         f.close();
         
     }
+}
+
+CorporateTS::CorporateTS() {
+    company_name = "123";
+    employee_status = "321";
+    company_balance = 546;
+}
+
+string CorporateTS::to_string() const {
+    return "123";
+}
+
+PremiumTS::PremiumTS() {
+    premium_level = "123";
+    reward_points = 0;
+}
+
+void PremiumTS::set_level(string level) {
+    // если введённый уровень премиум присутствует в списке премиумов 
+    if (count(levels.begin(), levels.end(), level) > 0) {
+        premium_level = level;
+    }
+    else {
+        premium_level = "Friend";
+        cerr << ("Ошибка: неверно введён уровень премиума. Выберите уровень премиума из списка премиумов") << endl;
+
+    }
+}
+
+/// Возвращает уровень премиума абонента
+string PremiumTS::get_level() const {
+    return premium_level;
+}
+
+void PremiumTS::set_rp(int points) {
+    // если введённый уровень премиум присутствует в списке премиумов 
+    if (points >= 0) {
+        reward_points = points;
+    }
+    else {
+        reward_points = 0;
+        cerr << ("Ошибка: неверно введена сумма бонусных баллов.") << endl;
+
+    }
+}
+
+/// Возвращает сумму бонусных баллов абонента
+int PremiumTS::get_rp() const {
+    return reward_points;
+}
+
+string PremiumTS::to_string() const {
+    return TelSub::to_string() + premium_level + ::to_string(reward_points);
 }
 
 /// Тестирование методов класса

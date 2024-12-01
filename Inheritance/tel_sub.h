@@ -41,7 +41,7 @@ public:
     /// Пополнение баланса абонента на величину balance1
     void replenish_balance(const double& balance1);
     /// Возвращает строку из всех полей объекта класса TelSub 
-    string to_string() const;
+    virtual string to_string() const;
     /// Записывает поля объекта класса TelSub в файл fname
     void save_sub(const string& fname) const;
     /// Считывает данные из файла fname и заполняет поля объекта sub
@@ -55,10 +55,20 @@ public:
     string employee_status;
     double company_balance;
     CorporateTS();
+    string to_string() const override;
 };
 
 class PremiumTS: public TelSub {
-
+private:
+    string premium_level;
+    int reward_points;
+public:
+    PremiumTS();
+    void set_level(string level);
+    string get_level() const;
+    void set_rp(int points);
+    int get_rp() const;
+    string to_string() const override;
 };
 
 /// Тестирование методов класса
