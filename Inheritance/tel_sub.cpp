@@ -141,12 +141,14 @@ string TelSub::to_string() const {
         return s; 
 }
 
+/// Конструктор по умолчанию, задаёт стандартные значения для аккаунта корпоративного клиента
 CorporateTS::CorporateTS() {
     company_name = "Компания";
     employee_status = "Работник";
     company_balance = 546;
 }
 
+/// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, comp_name - название компании, employee - должность сотрудника, comp_balance - корпоративный баланс
 CorporateTS::CorporateTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
     const string& comp_name, const string& employee, const double& comp_balance){
     company_name = comp_name;
@@ -154,9 +156,9 @@ CorporateTS::CorporateTS(const string& pn, const string& an, const string& tarif
     company_balance = comp_balance;
 }
 
-/// Изменяет поле тарифа на тариф tariff1
+/// Изменяет поле тарифа объекта класса CorporateTS на тариф tariff1
 void CorporateTS::set_tariff(const string& tariff1) {
-    // если введённый тариф присутствует в списке тарифов
+    // если введённый тариф присутствует в списке корпоративных тарифов
     if (count(corp_tariffs.begin(), corp_tariffs.end(), tariff1) > 0) {
         tariff = tariff1;
     }
@@ -167,16 +169,19 @@ void CorporateTS::set_tariff(const string& tariff1) {
     }
 }
 
+/// Возвращает строку из всех полей объекта класса CorporateTS
 string CorporateTS::to_string() const {
     return TelSub::to_string() + company_name + " " + employee_status + " " + ::to_string(company_balance) + "\n";
 }
 
+/// Конструктор по умолчанию, задаёт стандартные значения полей для аккаунта премиум-клиента
 PremiumTS::PremiumTS() {
     premium_duration = 30;
     premium_level = "Great Guy";
     reward_points = 0;
 }
 
+/// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, duration - количество оставшихся дней премиума, premium - уровень премиума, points - бонусные баллы
 PremiumTS::PremiumTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
     const int& duration, const string& premium, const int& points) {
     premium_duration = duration;
@@ -184,7 +189,7 @@ PremiumTS::PremiumTS(const string& pn, const string& an, const string& tariff1, 
     reward_points = points;
 }
 
-
+/// Установить уровень премиума level
 void PremiumTS::set_level(string level) {
     // если введённый уровень премиума присутствует в списке премиумов 
     if (count(levels.begin(), levels.end(), level) > 0) {
@@ -202,8 +207,9 @@ string PremiumTS::get_level() const {
     return premium_level;
 }
 
+/// Установить количество бонусных баллов points
 void PremiumTS::set_rp(int points) {
-    // если введённый уровень премиум присутствует в списке премиумов 
+    // если задаваемое кол-во баллов не меньше нуля
     if (points >= 0) {
         reward_points = points;
     }
@@ -219,6 +225,7 @@ int PremiumTS::get_rp() const {
     return reward_points;
 }
 
+/// Возвращает строку из всех полей объекта класса PremiumTS
 string PremiumTS::to_string() const {
     return TelSub::to_string() + ::to_string(premium_duration) + " дней " + premium_level + " " + ::to_string(reward_points) + "\n";
 }

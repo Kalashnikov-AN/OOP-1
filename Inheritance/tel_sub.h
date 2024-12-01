@@ -70,7 +70,7 @@ private:
     string premium_level; // уровень премиума
     int reward_points; // бонусные баллы на премиум-аккаунте абонента
 public:
-    /// Конструктор по умолчанию, задаёт стандартные значения для аккаунта премиум-клиента
+    /// Конструктор по умолчанию, задаёт стандартные значения полей для аккаунта премиум-клиента
     PremiumTS();
     /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, duration - количество оставшихся дней премиума, premium - уровень премиума, points - бонусные баллы
     PremiumTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
