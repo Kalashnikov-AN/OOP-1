@@ -181,9 +181,16 @@ void TelSub::load_sub(const string& fname) {
 }
 
 CorporateTS::CorporateTS() {
-    company_name = "123";
-    employee_status = "321";
+    company_name = "Компания";
+    employee_status = "Работник";
     company_balance = 546;
+}
+
+CorporateTS::CorporateTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
+    const string& comp_name, const string& employee, const double& comp_balance){
+    company_name = comp_name;
+    employee_status = employee;
+    company_balance = comp_balance;
 }
 
 /// Изменяет поле тарифа на тариф tariff1
@@ -200,13 +207,22 @@ void CorporateTS::set_tariff(const string& tariff1) {
 }
 
 string CorporateTS::to_string() const {
-    return TelSub::to_string() + company_name +  employee_status + ::to_string(company_balance);
+    return TelSub::to_string() + company_name + " " + employee_status + " " + ::to_string(company_balance) + "\n";
 }
 
 PremiumTS::PremiumTS() {
-    premium_level = "123";
+    premium_duration = 30;
+    premium_level = "Great Guy";
     reward_points = 0;
 }
+
+PremiumTS::PremiumTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
+    const int& duration, const string& premium, const int& points) {
+    premium_duration = duration;
+    premium_level = premium;
+    reward_points = points;
+}
+
 
 void PremiumTS::set_level(string level) {
     // если введённый уровень премиума присутствует в списке премиумов 
@@ -243,7 +259,7 @@ int PremiumTS::get_rp() const {
 }
 
 string PremiumTS::to_string() const {
-    return TelSub::to_string() + premium_level + ::to_string(reward_points);
+    return TelSub::to_string() + ::to_string(premium_duration) + " дней " + premium_level + " " + ::to_string(reward_points) + "\n";
 }
 
 /// Тестирование методов класса
