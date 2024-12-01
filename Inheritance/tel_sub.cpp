@@ -141,45 +141,6 @@ string TelSub::to_string() const {
         return s; 
 }
 
-/// Записывает поля объекта класса TelSub в файл fname
-void TelSub::save_sub(const string& fname) const {
-    ofstream f(fname); // Открываем файл на запись
-    if (f.is_open()) { // Если файл открыт
-        string temp = account_number;
-        f << temp << endl;
-        temp = name;
-        f << temp << endl;
-        temp = phone_number;
-        f << temp << endl;
-        temp = tariff;
-        f << temp << endl;
-        double temp1 = balance;
-        f << temp1 << endl;
-        f.close();
-    }
-}
-
-/// Считывает данные из файла fname и заполняет поля объекта sub
-void TelSub::load_sub(const string& fname) {
-    ifstream f(fname); // Открываем файл на чтение
-    if (f.is_open()) {
-        string temp;
-        getline(f, temp);
-        set_an(temp);
-        getline(f, temp);
-        set_name(temp);
-        getline(f, temp);
-        set_pn(temp);
-        getline(f, temp);
-        set_tariff(temp);
-        double temp1;
-        f >> temp1;
-        balance = temp1;
-        f.close();
-        
-    }
-}
-
 CorporateTS::CorporateTS() {
     company_name = "Компания";
     employee_status = "Работник";
@@ -297,15 +258,4 @@ void Test_TelSub() {
     TestSet.replenish_balance(-20);
     assert(TestSet.balance == 150);
 
-    // Тест функции save_sub
-    string test_fname = "test.txt";
-    TestSet.save_sub(test_fname);
-    TelSub LoadSet;
-    LoadSet.load_sub(test_fname);
-    assert(LoadSet.to_string() == "+8(924)000-00-00 000001 Based Name Surname 150,000000\n");
-
-    // Тест функции load_sub
-    string test_fname2 = "test_load.txt";
-    LoadSet.load_sub(test_fname2);
-    assert(LoadSet.to_string() == "+8(914)000-00-00 000002 Based Name Surname 100,000000\n");
 }

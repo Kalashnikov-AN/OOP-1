@@ -26,13 +26,6 @@ int main() {
     subs[0].replenish_balance(400);
     cout << subs[0].to_string(); // Вывод всех полей объекта на экран
 
-    // Запись состояния объекта в файл, загрузка состояния объекта из файла
-    string fname = "text.txt";
-    subs[0].save_sub(fname);
-    subs[1].load_sub(fname);
-    cout << subs[1].to_string();
-
-
     // Динамическое создание объекта
     TelSub* SubDin = new TelSub;
     (*SubDin).set_an("000004"); // работа с его методами первым способом
@@ -50,6 +43,5 @@ int main() {
     for (int i = 0; i < 10; i++) {
         delete SubPtr[i];
     }
-    //todo: загружать с гита через файл - клонировать репозиторий
 
 }
