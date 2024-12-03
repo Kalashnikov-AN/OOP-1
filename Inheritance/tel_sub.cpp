@@ -15,9 +15,9 @@
 
 using namespace std;
 
-vector <string> corp_tariffs{ "Partner", "Union", "Best Friends"};
-vector <string> tariffs{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
-vector <string> levels{"Great Guy", "Friend", "Super-Premium"};
+const vector <string> corp_tariffs{ "Partner", "Union", "Best Friends"};
+const vector <string> tariffs{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
+const vector <string> levels{"Great Guy", "Friend", "Super-Premium"};
 
 
 /// Конструктор по умолчанию
@@ -150,7 +150,7 @@ CorporateTS::CorporateTS() {
 
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, comp_name - название компании, employee - должность сотрудника, comp_balance - корпоративный баланс
 CorporateTS::CorporateTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
-    const string& comp_name, const string& employee, const double& comp_balance){
+    const string& comp_name, const string& employee, const double& comp_balance): TelSub(pn, an, tariff1, name1, balance1){
     company_name = comp_name;
     employee_status = employee;
     company_balance = comp_balance;
@@ -183,7 +183,7 @@ PremiumTS::PremiumTS() {
 
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, duration - количество оставшихся дней премиума, premium - уровень премиума, points - бонусные баллы
 PremiumTS::PremiumTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
-    const int& duration, const string& premium, const int& points) {
+    const int& duration, const string& premium, const int& points): TelSub(pn, an, tariff1, name1, balance1) {
     premium_duration = duration;
     premium_level = premium;
     reward_points = points;
