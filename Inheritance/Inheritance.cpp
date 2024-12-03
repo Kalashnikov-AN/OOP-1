@@ -8,7 +8,7 @@ int main() {
 
     setlocale(LC_ALL, "ru-RU.UTF-8");
     // Тестирование методов класса
-    Test_TelSub();
+    Test_Classes();
 
     // Статическое создание объекта с помощью конструктора по умолчанию
     CorporateTS sub;
@@ -46,11 +46,17 @@ int main() {
 
     // Демонстрация динамического полиморфизма
     cout << endl << "Dynamic polymorphism:" << endl;
+
     CorporateTS subDP; // создаём объект производного класса для корпоративных абонентов с помощью конструктора по умолчанию
     cout << subDP.to_string(); // вызов варианта метода из производного класса
+
+    // Динамически создаём объект производного класса PremiumTS
     TelSub* subObj = new PremiumTS();
-    cout << subObj->to_string(); // вызов переопределённого метода
+    cout << subObj->to_string(); // вызов переопределённого метода из производного класса
+
     //subObj->set_level("Super-Premium"); // ошибка: set_level нет в базовом классе TelSub
-    dynamic_cast<PremiumTS*>(subObj)->set_level("Super-Premium");
+ 
+    // преобразовываем указатель на объект базового класса к указателю на объект производного класса и вызываем метод из прозв. класса
+    dynamic_cast<PremiumTS*>(subObj)->set_level("Super-Premium"); 
     
 }

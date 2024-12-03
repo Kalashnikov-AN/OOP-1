@@ -15,9 +15,9 @@
 
 using namespace std;
 //todo: style
-const vector <string> CORP_TARIFFS{ "Partner", "Union", "Best Friends"};
+const vector <string> CORP_TARIFFS{ "Partner", "Union", "Best_Friends"};
 const vector <string> TARIFFS{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
-const vector <string> LEVELS{"Great Guy", "Friend", "Super-Premium"};
+const vector <string> LEVELS{"Great_Guy", "Friend", "Super-Premium"};
 
 
 /// Конструктор по умолчанию
@@ -151,6 +151,7 @@ CorporateTS::CorporateTS() {
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, comp_name - название компании, employee - должность сотрудника, comp_balance - корпоративный баланс
 CorporateTS::CorporateTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
     const string& comp_name, const string& employee, const double& comp_balance): TelSub(pn, an, tariff1, name1, balance1){
+    set_tariff(tariff1);
     company_name = comp_name;
     employee_status = employee;
     company_balance = comp_balance;
@@ -177,7 +178,7 @@ string CorporateTS::to_string() const {
 /// Конструктор по умолчанию, задаёт стандартные значения полей для аккаунта премиум-клиента
 PremiumTS::PremiumTS() {
     premium_duration = 30;
-    premium_level = "Great Guy";
+    premium_level = "Great_Guy";
     reward_points = 0;
 }
 
@@ -232,8 +233,8 @@ string PremiumTS::to_string() const {
 }
 
 /// Тестирование методов класса
-void Test_TelSub() {
-    // Проверка конструктора с параметрами, проверка геттеров
+void Test_Classes() {
+    // Проверка конструктора базового класса с параметрами, проверка геттеров
     TelSub TestSub("+8(800)123-45-67", "000007", "Super-Tariff", "Test Test", 100);
     assert(TestSub.get_pn() == "+8(800)123-45-67");
     assert(TestSub.get_an () == "000007");
@@ -241,7 +242,7 @@ void Test_TelSub() {
     assert(TestSub.get_name() == "Test Test");
     assert(TestSub.balance == 100);
 
-    // Проверка сеттеров
+    // Проверка сеттеров для базового класса
     TelSub TestSet;
     TestSet.set_name("Billy Johnson");
     assert(TestSet.get_name() == "Billy Johnson");
@@ -254,7 +255,7 @@ void Test_TelSub() {
     TestSet.replenish_balance(150);
     assert(TestSet.balance == 150);
 
-    // Тест проверки введённых данных
+    // Тест проверки введённых данных для базового класса
     TestSet.set_name("123");
     assert(TestSet.get_name() == "Name Surname");
     TestSet.set_pn("123");
@@ -265,5 +266,14 @@ void Test_TelSub() {
     assert(TestSet.get_tariff() == "Based");
     TestSet.replenish_balance(-20);
     assert(TestSet.balance == 150);
+
+    // Проверка конструктора с параметрами для производного класса CorporateTS, проверка геттеров
+    cout << "123";
+    CorporateTS TestCorporate("+8(800)123-45-67", "000008", "Best_Friends", "Test Test", 100, "Yandex", "Junior", 256);
+    assert(TestCorporate.get_pn() == "+8(800)123-45-67");
+    assert(TestCorporate.get_an() == "000008");
+    assert(TestCorporate.get_tariff() == "Best_Friends");
+    assert(TestCorporate.get_name() == "Test Test");
+    assert(TestCorporate.balance == 100);
 
 }

@@ -88,4 +88,4 @@ public:
 };
 
 /// Тестирование методов класса
-void Test_TelSub();
+void Test_Classes();
