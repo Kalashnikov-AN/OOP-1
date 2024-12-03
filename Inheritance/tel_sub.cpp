@@ -14,10 +14,10 @@
 
 
 using namespace std;
-
-const vector <string> corp_tariffs{ "Partner", "Union", "Best Friends"};
-const vector <string> tariffs{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
-const vector <string> levels{"Great Guy", "Friend", "Super-Premium"};
+//todo: style
+const vector <string> CORP_TARIFFS{ "Partner", "Union", "Best Friends"};
+const vector <string> TARIFFS{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
+const vector <string> LEVELS{"Great Guy", "Friend", "Super-Premium"};
 
 
 /// Конструктор по умолчанию
@@ -79,7 +79,7 @@ void TelSub::set_an(const string& an){
 /// Изменяет поле тарифа на тариф tariff1
 void TelSub::set_tariff(const string& tariff1){
         // если введённый тариф присутствует в списке тарифов
-        if (count(tariffs.begin(), tariffs.end(), tariff1) > 0){ 
+        if (count(TARIFFS.begin(), TARIFFS.end(), tariff1) > 0){ 
                 tariff = tariff1;
         }
         else{
@@ -145,7 +145,7 @@ string TelSub::to_string() const {
 CorporateTS::CorporateTS() {
     company_name = "Компания";
     employee_status = "Работник";
-    company_balance = 546;
+    company_balance = 0;
 }
 
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, comp_name - название компании, employee - должность сотрудника, comp_balance - корпоративный баланс
@@ -159,7 +159,7 @@ CorporateTS::CorporateTS(const string& pn, const string& an, const string& tarif
 /// Изменяет поле тарифа объекта класса CorporateTS на тариф tariff1
 void CorporateTS::set_tariff(const string& tariff1) {
     // если введённый тариф присутствует в списке корпоративных тарифов
-    if (count(corp_tariffs.begin(), corp_tariffs.end(), tariff1) > 0) {
+    if (count(CORP_TARIFFS.begin(), CORP_TARIFFS.end(), tariff1) > 0) {
         tariff = tariff1;
     }
     else {
@@ -192,8 +192,9 @@ PremiumTS::PremiumTS(const string& pn, const string& an, const string& tariff1, 
 /// Установить уровень премиума level
 void PremiumTS::set_level(string level) {
     // если введённый уровень премиума присутствует в списке премиумов 
-    if (count(levels.begin(), levels.end(), level) > 0) {
+    if (count(LEVELS.begin(), LEVELS.end(), level) > 0) {
         premium_level = level;
+        cout << "Уровень премиума изменён на " << level << endl;
     }
     else {
         premium_level = "Friend";

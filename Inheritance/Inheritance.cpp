@@ -44,4 +44,13 @@ int main() {
         delete SubPtr[i];
     }
 
+    // Демонстрация динамического полиморфизма
+    cout << endl << "Dynamic polymorphism:" << endl;
+    CorporateTS subDP; // создаём объект производного класса для корпоративных абонентов с помощью конструктора по умолчанию
+    cout << subDP.to_string(); // вызов варианта метода из производного класса
+    TelSub* subObj = new PremiumTS();
+    cout << subObj->to_string(); // вызов переопределённого метода
+    //subObj->set_level("Super-Premium"); // ошибка: set_level нет в базовом классе TelSub
+    dynamic_cast<PremiumTS*>(subObj)->set_level("Super-Premium");
+    
 }
