@@ -14,7 +14,6 @@
 
 
 using namespace std;
-//todo: style
 const vector <string> CORP_TARIFFS{ "Partner", "Union", "Best_Friends"};
 const vector <string> TARIFFS{"Based", "Medium", "Advanced", "Pro", "Budget", "Super-Tariff", "Mega-Tariff"};
 const vector <string> LEVELS{"Great_Guy", "Friend", "Super-Premium"};
@@ -150,7 +149,7 @@ CorporateTS::CorporateTS() {
 
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, comp_name - название компании, employee - должность сотрудника, comp_balance - корпоративный баланс
 CorporateTS::CorporateTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
-    const string& comp_name, const string& employee, const double& comp_balance): TelSub(pn, an, tariff1, name1, balance1){
+    const string& comp_name, const string& employee, const double& comp_balance): TelSub(pn, an, "Based", name1, balance1) {
     set_tariff(tariff1);
     company_name = comp_name;
     employee_status = employee;
@@ -227,10 +226,30 @@ int PremiumTS::get_rp() const {
     return reward_points;
 }
 
+/// Установить продолжительность дней days действия премиума
+void PremiumTS::set_duration(int days) {
+    // если задаваемое кол-во дней не меньше нуля
+    if (days >= 0) {
+        premium_duration = days;
+    }
+    else {
+        premium_duration = 0;
+        cerr << ("Ошибка: неверно введена продолжительность действия премиума.") << endl;
+
+    }
+}
+
+/// Возвращает продолжительность действия премиума в днях
+int PremiumTS::get_duration() const {
+    return premium_duration;
+}
+
 /// Возвращает строку из всех полей объекта класса PremiumTS
 string PremiumTS::to_string() const {
     return TelSub::to_string() + ::to_string(premium_duration) + " дней " + premium_level + " " + ::to_string(reward_points) + "\n";
 }
+
+
 
 /// Тестирование методов класса
 void Test_Classes() {
@@ -268,12 +287,42 @@ void Test_Classes() {
     assert(TestSet.balance == 150);
 
     // Проверка конструктора с параметрами для производного класса CorporateTS, проверка геттеров
-    cout << "123";
     CorporateTS TestCorporate("+8(800)123-45-67", "000008", "Best_Friends", "Test Test", 100, "Yandex", "Junior", 256);
     assert(TestCorporate.get_pn() == "+8(800)123-45-67");
     assert(TestCorporate.get_an() == "000008");
     assert(TestCorporate.get_tariff() == "Best_Friends");
     assert(TestCorporate.get_name() == "Test Test");
     assert(TestCorporate.balance == 100);
+    assert(TestCorporate.company_name == "Yandex");
+    assert(TestCorporate.employee_status == "Junior");
+    assert(TestCorporate.company_balance == 256);
+
+    // Проверка переопределённого set_tariff для произодного класса CorporateTS
+    TestCorporate.set_tariff("Union");
+    assert(TestCorporate.get_tariff() == "Union");
+
+    // Тест проверки введённых данных для производного класса CorporateTS
+    TestCorporate.set_tariff("Tariff");
+    assert(TestCorporate.get_tariff() == "Partner");
+
+    // Проверка конструктора с параметрами для производного класса PremiumTS, проверка геттеров
+    PremiumTS TestPremium("+8(800)123-45-67", "000008", "Advanced", "Test Test", 100, 30, "Great_Guy", 256);
+    assert(TestPremium.get_pn() == "+8(800)123-45-67");
+    assert(TestPremium.get_an() == "000008");
+    //cout << TestPremium.get_tariff();
+    assert(TestPremium.get_tariff() == "Advanced");
+    assert(TestPremium.get_name() == "Test Test");
+    assert(TestPremium.balance == 100);
+    assert(TestPremium.get_duration() == 30);
+    assert(TestPremium.get_level() == "Great_Guy");
+    assert(TestPremium.get_rp() == 256);
+
+    //// Проверка переопределённого set_tariff для произодного класса CorporateTS
+    //TestPremium.set_tariff("Union");
+    //assert(TestPremium.get_tariff() == "Union");
+
+    //// Тест проверки введённых данных для производного класса CorporateTS
+    //TestPremium.set_tariff("Tariff");
+    //assert(TestPremium.get_tariff() == "Partner");
 
 }

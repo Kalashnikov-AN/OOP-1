@@ -14,7 +14,7 @@ int main() {
     CorporateTS sub;
     cout << sub.to_string(); // Вывод полей объекта
     // Статическое создание объекта с помощью конструктора c параметрами
-    CorporateTS SubP("+8(800)924-32-71", "000002", "Medium", "John Light", 120, "Yandex", "Worker", 320);
+    CorporateTS SubP("+8(800)924-32-71", "000002", "Partner", "John Light", 120, "Yandex", "Worker", 320);
     cout << SubP.to_string(); // Вывод полей объекта
 
     // Статический массив из объектов
