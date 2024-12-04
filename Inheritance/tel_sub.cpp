@@ -184,9 +184,9 @@ PremiumTS::PremiumTS() {
 /// Конструктор с параметрами: pn - номер телефона, an - номер лицевого счёта, tariff1 - тариф, name1 - имя, balance1 - баланс, duration - количество оставшихся дней премиума, premium - уровень премиума, points - бонусные баллы
 PremiumTS::PremiumTS(const string& pn, const string& an, const string& tariff1, const string& name1, const double& balance1,
     const int& duration, const string& premium, const int& points): TelSub(pn, an, tariff1, name1, balance1) {
-    premium_duration = duration;
-    premium_level = premium;
-    reward_points = points;
+    set_duration(duration);
+    set_level(premium);
+    set_rp(points);
 }
 
 /// Установить уровень премиума level

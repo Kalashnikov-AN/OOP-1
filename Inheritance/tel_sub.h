@@ -83,7 +83,9 @@ public:
     void set_rp(int points);
     /// Возвращает количество бонусных баллов
     int get_rp() const;
+    /// Установить продолжительность дней days действия премиума
     void set_duration(int days);
+    /// Возвращает продолжительность действия премиума в днях
     int get_duration() const;
     /// Возвращает строку из всех полей объекта класса PremiumTS
     string to_string() const override;

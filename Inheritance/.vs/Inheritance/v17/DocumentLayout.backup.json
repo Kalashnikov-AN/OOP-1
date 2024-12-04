@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{07113DE5-0CF3-4C29-9EEA-ABD8DD2C3F5D}|Inheritance.vcxproj|C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\Inheritance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{07113DE5-0CF3-4C29-9EEA-ABD8DD2C3F5D}|Inheritance.vcxproj|solutionrelative:Inheritance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{07113DE5-0CF3-4C29-9EEA-ABD8DD2C3F5D}|Inheritance.vcxproj|C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\tel_sub.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{07113DE5-0CF3-4C29-9EEA-ABD8DD2C3F5D}|Inheritance.vcxproj|solutionrelative:tel_sub.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{07113DE5-0CF3-4C29-9EEA-ABD8DD2C3F5D}|Inheritance.vcxproj|C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\tel_sub.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{07113DE5-0CF3-4C29-9EEA-ABD8DD2C3F5D}|Inheritance.vcxproj|solutionrelative:tel_sub.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{07113DE5-0CF3-4C29-9EEA-ABD8DD2C3F5D}|Inheritance.vcxproj|C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\Inheritance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{07113DE5-0CF3-4C29-9EEA-ABD8DD2C3F5D}|Inheritance.vcxproj|solutionrelative:Inheritance.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "tel_sub.h",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\tel_sub.h",
               "RelativeDocumentMoniker": "tel_sub.h",
               "ToolTip": "C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\tel_sub.h",
               "RelativeToolTip": "tel_sub.h",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAqwFYAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAqwFcAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-01T03:50:35.954Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "tel_sub.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\tel_sub.cpp",
               "RelativeDocumentMoniker": "tel_sub.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\tel_sub.cpp",
               "RelativeToolTip": "tel_sub.cpp",
-              "ViewState": "AgIAALAAAAAAAAAAAAASwMgAAABpAAAAAAAAAA==",
+              "ViewState": "AgIAAN8AAAAAzWOcvMAkwPMAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-01T03:24:35.984Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Inheritance.cpp",
               "DocumentMoniker": "C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\Inheritance.cpp",
               "RelativeDocumentMoniker": "Inheritance.cpp",
               "ToolTip": "C:\\Users\\huuma\\Documents\\\u041E\u041E\u041F\\OOP-1\\Inheritance\\Inheritance.cpp",
               "RelativeToolTip": "Inheritance.cpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACsAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADYAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-01T03:20:11.544Z"
+              "WhenOpened": "2024-12-01T03:20:11.544Z",
+              "EditorCaption": ""
             }
           ]
         }
