@@ -57,6 +57,6 @@ int main() {
     //subObj->set_level("Super-Premium"); // ошибка: set_level нет в базовом классе TelSub
  
     // преобразовываем указатель на объект базового класса к указателю на объект производного класса и вызываем метод из прозв. класса
-    dynamic_cast<PremiumTS*>(subObj)->set_level("Super-Premium"); 
+    dynamic_cast<PremiumTS*>(subObj)->set_level("Super-Premium"); // успешно
     
 }

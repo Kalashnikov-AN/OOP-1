@@ -198,7 +198,7 @@ void PremiumTS::set_level(string level) {
     }
     else {
         premium_level = "Friend";
-        cerr << ("Ошибка: неверно введён уровень премиума. Выберите уровень премиума из списка премиумов") << endl;
+        cerr << ("Ошибка: неверно введён уровень премиума. Выберите уровень премиума из списка премиумов.") << endl;
 
     }
 }
@@ -309,7 +309,6 @@ void Test_Classes() {
     PremiumTS TestPremium("+8(800)123-45-67", "000008", "Advanced", "Test Test", 100, 30, "Great_Guy", 256);
     assert(TestPremium.get_pn() == "+8(800)123-45-67");
     assert(TestPremium.get_an() == "000008");
-    //cout << TestPremium.get_tariff();
     assert(TestPremium.get_tariff() == "Advanced");
     assert(TestPremium.get_name() == "Test Test");
     assert(TestPremium.balance == 100);
@@ -317,12 +316,20 @@ void Test_Classes() {
     assert(TestPremium.get_level() == "Great_Guy");
     assert(TestPremium.get_rp() == 256);
 
-    //// Проверка переопределённого set_tariff для произодного класса CorporateTS
-    //TestPremium.set_tariff("Union");
-    //assert(TestPremium.get_tariff() == "Union");
+    // Проверка сеттеров для производного класса PremiumTS
+    TestPremium.set_level("Super-Premium");
+    assert(TestPremium.get_level() == "Super-Premium");
+    TestPremium.set_rp(128);
+    assert(TestPremium.get_rp() == 128);
+    TestPremium.set_duration(365);
+    assert(TestPremium.get_duration() == 365);
 
-    //// Тест проверки введённых данных для производного класса CorporateTS
-    //TestPremium.set_tariff("Tariff");
-    //assert(TestPremium.get_tariff() == "Partner");
+    // Тест проверки введённых данных для производного класса PremiumTS
+    TestPremium.set_level("Premium");
+    assert(TestPremium.get_level() == "Friend");
+    TestPremium.set_rp(-3);
+    assert(TestPremium.get_rp() == 0);
+    TestPremium.set_duration(-5);
+    assert(TestPremium.get_duration() == 0);
 
 }
