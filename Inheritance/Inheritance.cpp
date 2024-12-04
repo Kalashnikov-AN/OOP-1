@@ -55,7 +55,9 @@ int main() {
     cout << subObj->to_string(); // вызов переопределённого метода из производного класса
 
     //subObj->set_level("Super-Premium"); // ошибка: set_level нет в базовом классе TelSub
- 
+
+    TelSub subObj2 =  PremiumTS(); // содержит данные TelSub
+
     // преобразовываем указатель на объект базового класса к указателю на объект производного класса и вызываем метод из прозв. класса
     dynamic_cast<PremiumTS*>(subObj)->set_level("Super-Premium"); // успешно
     
